@@ -23,6 +23,21 @@ final class CoreTextRenderLayer: CALayer {
 
   // MARK: Internal
 
+  override init() {
+    super.init()
+    applyBorderAppearance()
+  }
+
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    applyBorderAppearance()
+  }
+
+  override init(layer: Any) {
+    super.init(layer: layer)
+    applyBorderAppearance()
+  }
+
   var text: String? {
     didSet {
       needsContentUpdate = true
@@ -214,6 +229,12 @@ final class CoreTextRenderLayer: CALayer {
   private var attributedString: NSAttributedString?
   private var strokeFrameSetter: CTFramesetter?
   private var needsContentUpdate = false
+  private let borderWidthValue: CGFloat = 1
+
+  private func applyBorderAppearance() {
+    borderColor = CGColor(red: 1, green: 0, blue: 0, alpha: 1)
+    borderWidth = borderWidthValue
+  }
 
   private func updateTextContent() {
     guard needsContentUpdate else { return }
