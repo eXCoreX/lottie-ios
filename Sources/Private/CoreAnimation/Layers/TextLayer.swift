@@ -132,7 +132,7 @@ final class TextLayer: BaseCompositionLayer {
     renderLayer.strokeWidth = CGFloat(text.strokeWidth ?? 0)
     renderLayer.strokeOnTop = text.strokeOverFill ?? false
 
-    renderLayer.preferredSize = text.textFrameSize?.sizeValue
+    renderLayer.preferredSize = CGSize(width: 600, height: 600)
     renderLayer.sizeToFit()
 
     renderLayer.transform = CATransform3DIdentity
